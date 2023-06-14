@@ -38,6 +38,7 @@ const InputLabel = (props: InputLabelProps) => {
     labelTranslationXOffset,
     maxFontSizeMultiplier,
     testID,
+    isTextPresent,
   } = props;
 
   const paddingOffset =
@@ -136,6 +137,7 @@ const InputLabel = (props: InputLabelProps) => {
           {
             color: activeColor,
           },
+          {fontWeight: isTextPresent || focused ? '700' : null}
         ]}
         numberOfLines={1}
         maxFontSizeMultiplier={maxFontSizeMultiplier}
@@ -156,6 +158,7 @@ const InputLabel = (props: InputLabelProps) => {
             color: textColor,
             opacity: placeholderOpacity,
           },
+          {fontWeight: isTextPresent || focused ? '700' : null}
         ]}
         numberOfLines={1}
         maxFontSizeMultiplier={maxFontSizeMultiplier}

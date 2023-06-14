@@ -329,6 +329,8 @@ const TextInputOutlined = ({
               {...labelProps}
               labelBackground={LabelBackground}
               maxFontSizeMultiplier={rest.maxFontSizeMultiplier}
+              placeholderColor={outlineColor ?? null}
+              isTextPresent={rest.value && rest.value !==''}
             />
           ) : null}
           {render?.({

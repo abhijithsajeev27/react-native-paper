@@ -97,6 +97,7 @@ export type InputLabelProps = {
   labelLayoutWidth: number;
   labelBackground?: any;
   maxFontSizeMultiplier?: number | undefined | null;
+  isTextPresent?: boolean | undefined | string;
 } & LabelProps;
 
 export type LabelBackgroundProps = {
