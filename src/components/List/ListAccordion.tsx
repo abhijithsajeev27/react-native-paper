@@ -107,6 +107,10 @@ export type Props = {
    * `pointerEvents` passed to the `View` container
    */
   pointerEvents?: ViewProps['pointerEvents'];
+  /**
+   * containerStyle that is passed to the wrapping TouchableRipple element View.
+   */
+  containerStyle?: StyleProp<ViewStyle>;
 };
 
 /**
@@ -173,6 +177,7 @@ const ListAccordion = ({
   expanded: expandedProp,
   accessibilityLabel,
   pointerEvents = 'none',
+  containerStyle,
 }: Props) => {
   const theme = useInternalTheme(themeOverrides);
   const [expanded, setExpanded] = React.useState<boolean>(
@@ -225,7 +230,7 @@ const ListAccordion = ({
       : handlePressAction;
   return (
     <View>
-      <View style={{ backgroundColor: theme?.colors?.background }}>
+      <View style={[{ backgroundColor: theme?.colors?.background }, containerStyle ? containerStyle : null]}>
         <TouchableRipple
           style={[theme.isV3 ? styles.containerV3 : styles.container, style]}
           onPress={handlePress}
