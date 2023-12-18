@@ -11,6 +11,7 @@ import {
   View,
   ViewProps,
   ViewStyle,
+  Platform
 } from 'react-native';
 
 import { useInternalTheme } from '../../core/theming';
@@ -243,6 +244,7 @@ const ListAccordion = ({
           testID={testID}
           theme={theme}
           borderless
+          accessible={Platform.OS === 'ios' ? false : true}
         >
           <View
             style={theme.isV3 ? styles.rowV3 : styles.row}
