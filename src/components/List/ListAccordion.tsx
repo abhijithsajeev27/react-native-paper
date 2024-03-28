@@ -11,7 +11,7 @@ import {
   View,
   ViewProps,
   ViewStyle,
-  Platform
+  Platform,
 } from 'react-native';
 
 import { useInternalTheme } from '../../core/theming';
@@ -230,8 +230,14 @@ const ListAccordion = ({
       ? () => groupContext.onAccordionPress(id)
       : handlePressAction;
   return (
-    <View>
-      <View style={[{ backgroundColor: theme?.colors?.background }, containerStyle ? containerStyle : null]}>
+    <View accessible={Platform.Os === 'ios' ? false : true}>
+      <View
+        style={[
+          { backgroundColor: theme?.colors?.background },
+          containerStyle ? containerStyle : null,
+        ]}
+        accessible={Platform.Os === 'ios' ? false : true}
+      >
         <TouchableRipple
           style={[theme.isV3 ? styles.containerV3 : styles.container, style]}
           onPress={handlePress}
@@ -249,6 +255,7 @@ const ListAccordion = ({
           <View
             style={theme.isV3 ? styles.rowV3 : styles.row}
             pointerEvents={pointerEvents}
+            accessible={Platform.Os === 'ios' ? false : true}
           >
             {left
               ? left({
@@ -257,6 +264,7 @@ const ListAccordion = ({
                 })
               : null}
             <View
+              accessible={Platform.Os === 'ios' ? false : true}
               style={[theme.isV3 ? styles.itemV3 : styles.item, styles.content]}
             >
               <Text
@@ -291,6 +299,7 @@ const ListAccordion = ({
             </View>
             <View
               style={[styles.item, description ? styles.multiline : undefined]}
+              accessible={Platform.Os === 'ios' ? false : true}
             >
               {right ? (
                 right({
